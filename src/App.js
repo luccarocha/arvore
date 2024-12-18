@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Tree from './components/Tree';
-import PhotoCard from './components/PhotoCard';
-import { useShakeDetector } from './hooks/useShakeDetector';
+import MemoryWall from './components/MemoryWall';
 import './App.css';
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
-  const [currentPhoto, setCurrentPhoto] = useState(null);
 
   useEffect(() => {
     // Simula o carregamento de fotos de um arquivo JSON ou API
@@ -18,20 +15,13 @@ const App = () => {
     ]);
   }, []);
 
-  const handleShake = () => {
-    if (photos.length > 0) {
-      const randomIndex = Math.floor(Math.random() * photos.length);
-      setCurrentPhoto(photos[randomIndex]);
-    }
-  };
-
-  useShakeDetector(handleShake);
-
   return (
     <div className="app">
-      <h1>Nossos 4 Anos de Amor</h1>
-      <Tree photos={photos} />
-      {currentPhoto && <PhotoCard photo={currentPhoto} />}
+      <header>
+        <h1>Nossas Memórias</h1>
+        <p>4 Anos de Amor e Aventuras</p>
+      </header>
+      <MemoryWall photos={photos} />
     </div>
   );
 };
