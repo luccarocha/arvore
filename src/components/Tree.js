@@ -6,8 +6,8 @@ const Tree = ({ photos }) => {
     <div className="tree">
       <div className="trunk"></div>
       <div className="branches">
-        {photos.map((photo) => (
-          <div key={photo.id} className="leaf">
+        {photos.slice(0, 20).map((photo, index) => (
+          <div key={photo.id || index} className="leaf">
             <img src={photo.url} alt={photo.story} />
           </div>
         ))}
